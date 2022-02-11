@@ -1,0 +1,234 @@
+// Item superclass program of case study-2
+
+package library;
+
+// abstract superclass named Item 
+public abstract class Item {
+    private int ide_no;
+    private String title;
+    private int copies;
+    
+	//default constructor
+	public Item() {
+	ide_no=0;
+	title="not known";
+	copies=0;
+	}
+	
+    public void libraryName() {
+    	System.out.println("The name of the library is Oxford library");
+    }
+    
+    //abstract methods
+    public abstract void issueDate();
+    public abstract void returnDate();
+    
+    //setter and getter for private member
+	public int getIde_no() {
+		return ide_no;}
+	public void setIde_no(int ide_no) {
+		this.ide_no = ide_no;}
+	public String getTitle() {
+		return title;}
+	public void setTitle(String title) {
+		this.title = title;}
+	public int getCopies() {
+		return copies;}
+	public void setCopies(int copies) {
+		this.copies = copies;}
+    }
+
+//MediaItem a subclass of Item   
+abstract class MediaItem extends Item {
+	
+    private int runtime;
+    
+    //setter and getter for runtime
+	public int getRuntime() {
+		return runtime;}
+	public void setRuntime(int runtime) {
+		this.runtime = runtime;}
+	
+	@Override
+	public void issueDate() {
+		System.out.println("Issue date is the date on which you issues the item.");}
+	@Override
+	public void returnDate() {
+		System.out.println("Return date is the date on which you returns the borrowed item.");}
+     
+    //abstract method videoCD
+	public abstract void videoCD(); 
+}
+
+// WrittenItem a subclass of Item
+abstract class WrittenItem extends Item {
+    
+	private String author_name;
+	
+    // setter and getter for private member author name
+	public String getAuthor_name() {
+		return author_name;}
+	public void setAuthor_name(String author_name) {
+		this.author_name = author_name;}
+	
+	@Override
+	public void issueDate() {
+		System.out.println("Issue date is the date on which you issues the item.");}
+	@Override
+	public void returnDate() {
+		System.out.println("Return date is the date on which you returns the borrowed item.");}
+	
+	// abstract methods bookJournals
+	public abstract void bookJournal();
+}
+
+// first subclass of WrittenItem is Book
+class Book extends WrittenItem {
+	
+	public void option() {
+	System.out.println("Books are of different types like-fiction,novel,10th,12th,11th,current affairs etc");
+	}
+
+	@Override
+	public void bookJournal() {
+		System.out.println("This is the book class which is subclass of WrittenItem class");		
+	}	
+}
+
+class Journals extends WrittenItem {
+	private int yearpub;
+	
+	public void option() {
+		System.out.println("Oxford is one of the biggest libraries in the world so it has all kinds of journals available");
+	}
+
+	@Override
+	public void bookJournal() {
+		System.out.println("This is journal class which is subclass of WrittenItem class");	
+	}
+	
+	//setter and getter for year published
+	public int getYearpub() {
+		return yearpub;}
+	public void setYearpub(int yearpub) {
+		this.yearpub = yearpub;}
+}
+
+class Video extends MediaItem {
+	
+	private String director;
+	private int genre;
+	private int year;
+	
+	//setter and getter for private member
+	public String getDirector() {
+		return director;}
+	public void setDirector(String director) {
+		this.director = director;}
+	public int getGenre() {
+		return genre;}
+	public void setGenre(int genre) {
+		this.genre = genre;}
+	public int getYear() {
+		return year;}
+	public void setYear(int year) {
+		this.year = year;}
+	
+	@Override
+	public void videoCD() {
+		System.out.println("This is containing all the video data available in Library");}
+}
+
+class CD extends MediaItem {
+	
+	private String artist;
+	private int genre;
+	
+	//getter and setter for private data member
+	public String getArtist() {
+		return artist;}
+	public void setArtist(String artist) {
+		this.artist = artist;}
+	public int getGenre() {
+		return genre;}
+	public void setGenre(int genre) {
+		this.genre = genre;}
+	
+	@Override
+	public void videoCD() {
+		System.out.println("This is containing all the CD's data available in Library");}
+}
+
+
+
+
+
+
+
+
+
+
+
+//Client code is:
+package library;
+
+public class Client {
+
+	public static void main(String[] args) {
+		
+		Book b=new Book();
+		Journals j=new Journals();
+		Video v=new Video();
+        CD c=new CD();
+        b.option();
+        b.bookJournal();
+        b.setAuthor_name("Shakespeare");
+        System.out.println("the author name is:"+b.getAuthor_name());
+        b.setIde_no(246);
+        System.out.println("the identification no. is;"+b.getIde_no());
+        b.setCopies(20);
+        System.out.println("the no.of copies are:"+b.getCopies());
+        b.setTitle("The Tempest");
+        System.out.println("the title of the book is:"+b.getTitle());
+        b.issueDate();
+        b.returnDate();
+        
+        j.bookJournal();
+        j.issueDate();
+        j.returnDate();
+        j.option();
+        j.setYearpub(2021);
+        System.out.println("the year of publish is:"+j.getYearpub());
+        j.setAuthor_name("Amrita pritam");
+        System.out.println("the author name is:"+j.getAuthor_name());
+        j.setIde_no(786);
+        System.out.println("the identification no. is;"+j.getIde_no());
+        j.setCopies(15);
+        System.out.println("the no.of copies are:"+j.getCopies());
+        j.setTitle("Nagmani");
+        System.out.println("the title of the book is:"+j.getTitle());
+        
+        //Similarly you can get the ouputs for video and CD class also
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
